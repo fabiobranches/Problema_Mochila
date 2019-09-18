@@ -32,7 +32,13 @@ public class KnapsackProblem {
     private boolean mutation = false;
     private int crossover_count = 0;
     private int clone_count = 0;
-    private int number_of_items = 0;
+ //MUDADO PARA TESTES   
+    
+    private int number_of_items = 10;
+    
+    
+//***********************
+    
     private int population_size = 0;
     private int maximum_generations = 0;
     private int generation_counter = 1;
@@ -585,105 +591,169 @@ public class KnapsackProblem {
      * Collects user input to be used as parameters for knapsack problem
      */
     private void getInput() {
-        String entrada;
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.println( "\n\nInsira o número de itens que deseja guardar na mochila:");
-        entrada = scanner.nextLine();
-        
-        while(entrada.isEmpty() || entrada.length() == 0 || !isInteger(entrada)){
-            System.out.println( "\nOops! Insira o número de itens que deseja guardar na mochila:");
-            entrada = scanner.nextLine();
-        }
-        
-        number_of_items = Integer.parseInt(entrada);
+//        String entrada;
+//        Scanner scanner = new Scanner(System.in);
+//        
+//        System.out.println( "\n\nInsira o número de itens que deseja guardar na mochila:");
+//        entrada = scanner.nextLine();
+//        
+//        while(entrada.isEmpty() || entrada.length() == 0 || !isInteger(entrada)){
+//            System.out.println( "\nOops! Insira o número de itens que deseja guardar na mochila:");
+//            entrada = scanner.nextLine();
+//        }
+//        
+//        number_of_items = Integer.parseInt(entrada);
 
-        // Value and weight of each item
-        for(int i = 0; i < number_of_items; i++) {
-            System.out.println("Digite o valor do " + (i + 1) + "º item: ");
-            entrada = scanner.nextLine();
-            if (isDouble(entrada)) { 
-                value_of_items.add(Double.parseDouble(entrada));
-            }
-            else {
-                while(!isDouble(entrada))
-                {
-                    System.out.println("Oops, não é um número :( Tente novamente!\n");
-                    System.out.println("Digite o valor do " + (i + 1) + "º item: ");
-                    entrada = scanner.nextLine();
-                }
-                //System.exit(1);
-            }
-
-            System.out.println("Digite o peso do " + (i + 1) + "º item: ");
-            entrada = scanner.nextLine();
-            if (isDouble(entrada)) {
-                weight_of_items.add(Double.parseDouble(entrada));
-            }
-            else {
-                while(!isDouble(entrada))
-                {
-                    System.out.println("Oops, não é um número :( Tente novamente!\n");
-                    System.out.println("Digite o valor do " + (i + 1) + "º item: ");
-                    entrada = scanner.nextLine();
-                }
-            }            
-        }
-
-        // Capacity of knapsack
-        System.out.println( "\nInsira a capacidade da mochila:");
-        entrada = scanner.nextLine();
-        if (isInteger(entrada)) {
-            knapsack_capacity = Integer.parseInt(entrada);
-        }
-        else {
-            System.out.println("Oops, não é um número :( Tente novamente!");
-            System.exit(1);
-        }
-
-        // Population size
-        System.out.println( "\nInsira o tamanho da população:");
-        entrada = scanner.nextLine();
-        if (isInteger(entrada)) {
-            population_size = Integer.parseInt(entrada);
-        }
-        else {
-            System.out.println("Oops, não é um número :( Tente novamente!");
-            System.exit(1);
-        }
-
-        // Maximum number of generations
-        System.out.println( "\nInsira o número máximo de gerações:");
-        entrada = scanner.nextLine();
-        if (isInteger(entrada)) {
-            maximum_generations = Integer.parseInt(entrada);
-        }
-        else {
-            System.out.println("Oops, não é um número :( Tente novamente!");
-            System.exit(1);
-        }
-
-        // Crossover probability
-        System.out.println( "\nInsira a probabilidade de cruzamento (sem o %):");
-        entrada = scanner.nextLine();
-        if (isDouble(entrada)) {
-            prob_crossover = Double.parseDouble(entrada);
-        }
-        else {
-            System.out.println("Oops, não é um número :( Tente novamente!");
-            System.exit(1);
-        }
-
-        // Mutation probability
-        System.out.println( "\nInsira a probabilidade de mutação (sem o %):");
-        entrada = scanner.nextLine();
-        if (isDouble(entrada)) {
-            prob_mutation = Double.parseDouble(entrada);
-        }
-        else {
-            System.out.println("Oops, não é um número :( Tente novamente!");
-            System.exit(1);
-        }
+//ADICIONADO APENAS PARA TESTES
+ value_of_items.add(Double.parseDouble("1"));
+ weight_of_items.add(Double.parseDouble("10"));
+ 
+ value_of_items.add(Double.parseDouble("2"));
+ weight_of_items.add(Double.parseDouble("9"));
+ 
+ value_of_items.add(Double.parseDouble("3"));
+ weight_of_items.add(Double.parseDouble("8"));
+  
+ value_of_items.add(Double.parseDouble("4"));
+ weight_of_items.add(Double.parseDouble("7"));
+  
+ value_of_items.add(Double.parseDouble("5"));
+ weight_of_items.add(Double.parseDouble("6"));
+  
+ value_of_items.add(Double.parseDouble("6"));
+ weight_of_items.add(Double.parseDouble("5"));
+  
+ value_of_items.add(Double.parseDouble("7"));
+ weight_of_items.add(Double.parseDouble("4"));
+  
+ value_of_items.add(Double.parseDouble("8"));
+ weight_of_items.add(Double.parseDouble("3"));
+  
+ value_of_items.add(Double.parseDouble("9"));
+ weight_of_items.add(Double.parseDouble("2"));
+  
+ value_of_items.add(Double.parseDouble("10"));
+ weight_of_items.add(Double.parseDouble("1"));
+  
+ knapsack_capacity = Integer.parseInt("27");
+ population_size = Integer.parseInt("10");
+ maximum_generations = Integer.parseInt("30");
+ prob_crossover = Double.parseDouble("0.5");
+ prob_mutation = Double.parseDouble("0.03");
+//*****************************
+//        // Value and weight of each item
+//        for(int i = 0; i < number_of_items; i++) {
+//            System.out.println("Digite o valor do " + (i + 1) + "º item: ");
+//            entrada = scanner.nextLine();
+//            if (isDouble(entrada)) { 
+//                value_of_items.add(Double.parseDouble(entrada));
+//            }
+//            else {
+//                while(!isDouble(entrada))
+//                {
+//                    System.out.println("Oops, não é um número :( Tente novamente!\n");
+//                    System.out.println("Digite o valor do " + (i + 1) + "º item: ");
+//                    entrada = scanner.nextLine();
+//                    value_of_items.add(Double.parseDouble(entrada));
+//                }
+//                //System.exit(1);
+//            }
+//
+//            System.out.println("Digite o peso do " + (i + 1) + "º item: ");
+//            entrada = scanner.nextLine();
+//            if (isDouble(entrada)) {
+//                weight_of_items.add(Double.parseDouble(entrada));
+//            }
+//            else {
+//                while(!isDouble(entrada))
+//                {
+//                    System.out.println("Oops, não é um número :( Tente novamente!\n");
+//                    System.out.println("Digite o valor do " + (i + 1) + "º item: ");
+//                    entrada = scanner.nextLine();
+//                    weight_of_items.add(Double.parseDouble(entrada));
+//                }
+//            }            
+//        }
+//
+//        // Capacity of knapsack
+//        System.out.println( "\nInsira a capacidade da mochila:");
+//        entrada = scanner.nextLine();
+//        if (isInteger(entrada)) {
+//            knapsack_capacity = Integer.parseInt(entrada);
+//        }
+//        else {
+//            while(!isInteger(entrada))
+//            {
+//                System.out.println("Oops, não é um número :( Tente novamente!\n");
+//                System.out.println( "\nInsira a capacidade da mochila:");
+//                entrada = scanner.nextLine();
+//                 knapsack_capacity = Integer.parseInt(entrada);
+//            }
+//        }
+//
+//        // Population size
+//        System.out.println( "\nInsira o tamanho da população:");
+//        entrada = scanner.nextLine();
+//        if (isInteger(entrada)) {
+//            population_size = Integer.parseInt(entrada);
+//        }
+//        else {
+//            while(!isInteger(entrada))
+//            {
+//                System.out.println("Oops, não é um número :( Tente novamente!\n");
+//                System.out.println( "\nInsira o tamanho da população:");
+//                entrada = scanner.nextLine();
+//                population_size = Integer.parseInt(entrada);
+//            }
+//        }
+//
+//        // Maximum number of generations
+//        System.out.println( "\nInsira o número máximo de gerações:");
+//        entrada = scanner.nextLine();
+//        if (isInteger(entrada)) {
+//            maximum_generations = Integer.parseInt(entrada);
+//        }
+//        else {
+//            while(!isInteger(entrada))
+//            {
+//                System.out.println("Oops, não é um número :( Tente novamente!\n");
+//                System.out.println( "\nInsira o tamanho da população:");
+//                entrada = scanner.nextLine();
+//                maximum_generations = Integer.parseInt(entrada);
+//            }
+//        }
+//
+//        // Crossover probability
+//        System.out.println( "\nInsira a probabilidade de cruzamento (sem o %):");
+//        entrada = scanner.nextLine();
+//        if (isDouble(entrada)) {
+//            prob_crossover = Double.parseDouble(entrada);
+//        }
+//        else {
+//            while(!isDouble(entrada))
+//            {
+//                System.out.println("Oops, não é um número :( Tente novamente!\n");
+//                System.out.println( "\nInsira a probabilidade de cruzamento (sem o %):");
+//                entrada = scanner.nextLine();
+//                prob_crossover = Double.parseDouble(entrada);
+//            }
+//        }
+//
+//        // Mutation probability
+//        System.out.println( "\nInsira a probabilidade de mutação (sem o %):");
+//        entrada = scanner.nextLine();
+//        if (isDouble(entrada)) {
+//            prob_mutation = Double.parseDouble(entrada);
+//        }
+//        else {
+//            while(!isDouble(entrada))
+//            {
+//                System.out.println("Oops, não é um número :( Tente novamente!\n");
+//                System.out.println( "\nInsira a probabilidade de mutação (sem o %):");
+//                entrada = scanner.nextLine();
+//                prob_mutation = Double.parseDouble(entrada);
+//            }
+//        }
 
     }
 
