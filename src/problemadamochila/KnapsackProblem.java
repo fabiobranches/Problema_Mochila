@@ -606,8 +606,13 @@ public class KnapsackProblem {
                 value_of_items.add(Double.parseDouble(entrada));
             }
             else {
-                System.out.println("Oops, não é um número :( Tente novamente!");
-                System.exit(1);
+                while(!isDouble(entrada))
+                {
+                    System.out.println("Oops, não é um número :( Tente novamente!\n");
+                    System.out.println("Digite o valor do " + (i + 1) + "º item: ");
+                    entrada = scanner.nextLine();
+                }
+                //System.exit(1);
             }
 
             System.out.println("Digite o peso do " + (i + 1) + "º item: ");
@@ -616,8 +621,12 @@ public class KnapsackProblem {
                 weight_of_items.add(Double.parseDouble(entrada));
             }
             else {
-                System.out.println("Oops, não é um número :( Tente novamente!");
-                System.exit(1);
+                while(!isDouble(entrada))
+                {
+                    System.out.println("Oops, não é um número :( Tente novamente!\n");
+                    System.out.println("Digite o valor do " + (i + 1) + "º item: ");
+                    entrada = scanner.nextLine();
+                }
             }            
         }
 
