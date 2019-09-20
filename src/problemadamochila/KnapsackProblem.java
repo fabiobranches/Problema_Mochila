@@ -574,6 +574,7 @@ public class KnapsackProblem {
         for(int i = 0; i < number_of_items; i++) {
             c = '0';
             double rnd = Math.random(); 
+             System.out.println("TESTE Random: \n" + rnd);
             // If random number is greater than 0.5, chromosome is '1'
             // If random number is less than 0.5, chromosome is '0'
             if(rnd > 0.5) {
@@ -583,6 +584,7 @@ public class KnapsackProblem {
             gene.append(c);
         }
         // Stringbuilder object to string; return
+        System.out.println("TESTE MAKE GENE: \n" + gene.toString());
         return gene.toString();
     }
 
